@@ -1,6 +1,7 @@
 <?php
 
 use Symfony\Component\HttpKernel\Fragment\RoutableFragmentRenderer;
+use App\Http\Controllers\StudentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,14 +18,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/hello', function(){
-    $name = 'Bauyrzhan';
-    $tasks = [
-        'add_task',
-        'rm_task',
-        'show_task'
-    ];
-    return view('hello', compact('tasks'), [
-        'title'=>$name
-    ]);
-});
+Route::get('students/', 'StudentsController@index');
+Route::get('students/{id}', 'StudentsController@detail');
+
+
+// Route::get('/student', function(){
+//     $students = App\Student::notpassed();
+//     return view('student.index', compact('students'));
+// });
+
+
+// Route::get('/student/{id}', function($id){
+//     $student = App\Student::find($id);    
+//     return view('student.detail', compact('student'));
+// });
