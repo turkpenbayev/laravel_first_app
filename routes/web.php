@@ -1,5 +1,7 @@
 <?php
 
+use Symfony\Component\HttpKernel\Fragment\RoutableFragmentRenderer;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,4 +15,16 @@
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/hello', function(){
+    $name = 'Bauyrzhan';
+    $tasks = [
+        'add_task',
+        'rm_task',
+        'show_task'
+    ];
+    return view('hello', compact('tasks'), [
+        'title'=>$name
+    ]);
 });
